@@ -39,6 +39,10 @@ const sendReferralEmail = async (referrerEmail, refereeEmail) => {
   return transporter.sendMail(mailOptions);
 };
 
+app.get('/', async(req, res)=>{
+  res.status(201).send("server is running");
+
+})
 app.get('/referrals', async(req, res)=>{
   const allData= await prisma.referral.findMany();
   res.status(201).json(allData);
